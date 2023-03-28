@@ -1,0 +1,34 @@
+class SiteWeb:
+    
+    def __init__(self, title, url):
+        self.title = titlee
+        self.url = url
+        self.contenu = []
+    
+    def afficherTitle(self):
+        print(self.title)
+
+    def afficherUrl(self):
+        print(self.url)
+
+    def addContent(self, c):
+        self.content.append(c)
+
+    def __repr__(self):
+        return f"WebSite({self.title}, {self.url})"
+    
+    # Supplémentaire
+    def afficherContent(self):
+        print("les contenus ajoutés sont: \n")
+        for i in self.content:
+            print (f"\t -{i}")
+
+boreal = WebSite("Site du Collège Boréal","www.collegeboreal.ca")
+boreal.addContent("Education")
+boreal.addContent("Informatique")
+boreal.addContent("Affaires")
+boreal.addContent("Infirmierie")
+
+print(f"Le {boreal.titre} est dans le lien suivant: \n\t <<{boreal.url}>> \n")
+
+boreal.afficherContenu()
