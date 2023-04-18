@@ -1,0 +1,53 @@
+import cv2
+from djitellopy import Tello
+import time
+import numpy as np
+
+
+tello = Tello()
+
+tello.connect()
+
+tello.streamon()
+
+cv2.namedWindow("Tello Video Feed")
+
+last_frame = np.zeros((720, 960, 3), dtype=np.uint8)
+
+def keyboard_control():
+    global last_frame
+    while True:
+        key = cv2.waitKey(1) & 0xFF
+        
+        if key == ord('q'):
+            break
+        
+        if key == ord('w'):
+            tello.move_forward(30)
+        elif key == ord('s'):
+            tello.move_backward(30)
+        elif key == ord('a'):
+            tello.move_left(30)
+        elif key == ord('d'):
+            tello.move_right(30)
+        elif key == ord('u'):
+            tello.move_up(30)
+        elif key == ord('j'):
+            tello.move_down(30)
+        elif key == ord('l'):
+            tello.rotate_clockwise(30)
+        elif key == ord('h'):
+            tello.rotate_counter_clockwise(30)
+        
+        frame = tello.get_frame_read().frame
+        
+        cv2.imshow("Tello Video Feed", frame)
+        
+        last_frame = frame
+    
+    tello.land()
+    tello.streamoff()
+
+keyboard_control()
+
+cv2.destroyAllWindows()
