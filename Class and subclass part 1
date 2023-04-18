@@ -1,34 +1,33 @@
-class SiteWeb:
-    
+class WebSite:
     def __init__(self, title, url):
-        self.title = titlee
+        self.title = title
         self.url = url
-        self.contenu = []
-    
-    def afficherTitle(self):
+        self.content = []
+
+    def showTitle(self):
         print(self.title)
 
-    def afficherUrl(self):
+    def showUrl(self):
         print(self.url)
 
-    def addContent(self, c):
-        self.content.append(c)
+    def addContent(self, content):
+        self.content.append(content)
 
     def __repr__(self):
-        return f"WebSite({self.title}, {self.url})"
-    
-    # Supplémentaire
-    def afficherContent(self):
-        print("les contenus ajoutés sont: \n")
+        return f"The website ({self.title}, {self.url})"
+
+    def showContent(self):
+        print("The added contents are:\n")
         for i in self.content:
-            print (f"\t -{i}")
+            print(f"\t -{i}")
 
-boreal = WebSite("Site du Collège Boréal","www.collegeboreal.ca")
-boreal.addContent("Education")
-boreal.addContent("Informatique")
-boreal.addContent("Affaires")
-boreal.addContent("Infirmierie")
+facebook = WebSite("Website of FACEBOOK ","www.facebook.com")
+facebook.addContent("Profil")
+facebook.addContent("pictures")
+facebook.addContent("About me")
+facebook.showContent()
+facebook.showTitle()
+facebook.showUrl()
+facebook.__repr__()
 
-print(f"Le {boreal.titre} est dans le lien suivant: \n\t <<{boreal.url}>> \n")
-
-boreal.afficherContenu()
+print(f"\n The {facebook.title} is on the following link: \n\t\t <<{facebook.url}>>")
